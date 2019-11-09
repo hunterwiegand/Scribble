@@ -51,6 +51,15 @@ class Nav extends Component {
           <ul className="navbar-nav">
             <li className="nav-item">
               <Link
+              onClick={this.toggleNav}
+              className={window.location.pathname === "/atramentTest" ? "nav-link active" : "nav-link"}
+              to="/atramentTest"
+              >
+                Test Canvas
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
                 onClick={this.toggleNav}
                 className={window.location.pathname === "/mail" ? "nav-link active" : "nav-link"}
                 to="/mail"

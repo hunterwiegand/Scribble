@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./pages/Home";
 // import Saved from "./pages/Saved";
 import Nav from "./components/Nav";
+import atramentTest from "./pages/testingAtrament";
 // Create our app function that will return our html like JSK to 
 // Display our front end
 
@@ -18,7 +19,7 @@ function App() {
         <Switch>
           {/* Set our routes for home, that will load the home component */}
           <Route exact path="/" component={Home} />
-          <Route exact path="/test" component={Home} />
+          <Route exact path="/atramentTest" component={atramentTest} />
         </Switch>
       </div>
     </Router>
