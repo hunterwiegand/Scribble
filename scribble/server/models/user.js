@@ -8,7 +8,9 @@ const userSchema = new Schema({
   // userName entry that is a String, this is required when creating a user
   userName: { type: String, required: true, unique: true },
   // email entry that is a String
-  email: { type: String }
+  email: { type: String, required: true },
+  password: { type: String, required: true}
+
 });
 
 // Create a mongodb collection with the userSchema, using mongoose

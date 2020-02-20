@@ -10,6 +10,13 @@ module.exports = {
         .then(dbUser => res.json(dbUser))
         .catch(err => res.status(422).json(err));
     },
+    // Get all entried from the user collection and return
+    // in json format
+    findAll: function(req, res) {
+        db.User.find(req.query)
+        .then(dbUser => (res.json({dbUser})))
+        .catch(err => res.status(422).json(err));
+    },
     // Create a new entry in the User collection
     // Then return that entry in json format
     create: function(req, res) {
@@ -22,8 +29,5 @@ module.exports = {
         db.User.findOneAndUpdate({ id: req.params.id }, req.body)
         .then(dbUser => res.json(dbUser))
         .catch(err => res.status(422).json(err));
-    },
-    test: function() {
-        console.log("TESTING");
     }
 }

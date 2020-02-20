@@ -21,8 +21,12 @@ export default {
   saveBook: function(bookData) {
     return axios.post("/api/books", bookData);
   },
-  test: function() {
-    console.log("Testing in API.js")
-    return axios.get("/api/test");
+  // Function that retruns an axios call used to return all users in our database
+  getUsers: function() {
+    return axios.get("/api/users");
+  },
+
+  googleAuth: function() {
+    return axios.get("/auth/auth");
   }
 };

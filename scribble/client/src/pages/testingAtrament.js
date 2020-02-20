@@ -6,6 +6,9 @@ import React, { Component } from "react";
 import { Container } from "../components/Grid";
 import Canvas from "../components/Canvas"
 
+// Import our color wheel packaged
+import { SketchPicker } from 'react-color'
+
 import testingAtratment from "../utils/atrament.js";
 
 // Class Home that extends our React.Component
@@ -13,67 +16,97 @@ import testingAtratment from "../utils/atrament.js";
 // hold our array of books, our search query, and our message
 class atramentTest extends Component {
 
+
+    Canvas = {
+        clear: function () { testingAtratment.clear() },
+        small: function () { testingAtratment.resize(5) },
+        large: function () { testingAtratment.resize(15) },
+        color: function (color) { testingAtratment.color(color) },
+        draw: function () { testingAtratment.mode("draw") },
+        erase: function () { testingAtratment.mode("erase") }
+    };
+
+    handleChangeComplete = (color, event) => {
+        console.log("color: ", color);
+        this.Canvas.color(color.hex);
+        console.log("TEST");
+    }
+
+    state = {
+        displayColorPicker: false,
+        currentColor: "",
+    };
+
     // After the component mounts (AKA loads in) Do this
     componentDidMount() {
         // Look into our testing Atratment object we imported in
         // and run the .test method from it
         testingAtratment.create();
+        // console.log(this.state.currentColor);
+        // this.Canvas.color(this.state.currentColor);
     }
 
-    Canvas = {
-        clear: function() {testingAtratment.clear()},
-        small: function() {testingAtratment.resize(10)},
-        large: function() {testingAtratment.resize(20)},
-        blue: function() {testingAtratment.color("blue")},
-        yellow: function() {testingAtratment.color("yellow")},
-        green: function() {testingAtratment.color("green")},
-        red: function() {testingAtratment.color("red")},
-        draw: function() {testingAtratment.mode("draw")},
-        erase: function() {testingAtratment.mode("erase")}
+    handleClick = () => {
+        this.setState({ displayColorPicker: !this.state.displayColorPicker })
     };
 
+    handleClose = () => {
+        this.setState({ displayColorPicker: false });
+    };
+
+    handleChange = (color) => {
+        this.Canvas.color(color.hex);
+    }
 
     // This is ran after the componenet mounts, returning the home page JSK
     render() {
+        const popover = {
+            position: 'absolute',
+            zIndex: '2',
+        }
+        const cover = {
+            position: 'fixed',
+            top: '0px',
+            right: '0px',
+            bottom: '0px',
+            left: '0px',
+        }
         return (
             <Container>
-                <h1>TESTING</h1>
-                <Canvas></Canvas>
                 <button
-                onClick={() => this.Canvas.clear()}
+                    onClick={() => this.Canvas.clear()}
                 >
                     CLEAR
                 </button>
+                <Canvas></Canvas>
                 <button
-                onClick={() => this.Canvas.small()}
+                    onClick={() => this.Canvas.small()}
                 >
                     SMALL
                 </button>
                 <button
-                onClick={() => this.Canvas.large()}
+                    onClick={() => this.Canvas.large()}
                 >
                     LARGE
                 </button>
                 <button
-                onClick={() => this.Canvas.blue()}
-                >
-                    BLUE
-                </button>
-                <button
-                onClick={() => this.Canvas.red()}
-                >
-                    RED
-                </button>
-                <button
-                onClick={() => this.Canvas.draw()}
+                    onClick={() => this.Canvas.draw()}
                 >
                     DRAW
                 </button>
                 <button
-                onClick={() => this.Canvas.erase()}
+                    onClick={() => this.Canvas.erase()}
                 >
                     ERASE
                 </button>
+                <div>
+                    <button onClick={this.handleClick}>COLOR</button>
+                        
+                    {this.state.displayColorPicker ? <div style={popover}>
+                        <div style={cover} onClick={this.handleClose} />
+                        <SketchPicker color={this.state.color} onChange={this.handleChange} />
+                    </div> : null}
+                </div>
             </Container>
         );
     }
