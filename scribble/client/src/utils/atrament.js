@@ -6,6 +6,7 @@ const atrament = require("atrament");
 // Create a global object for the sketcher
 let sketcher = {};
 
+
 export default {
     // Method to test the drawable canvas
     create: function () {
@@ -23,12 +24,15 @@ export default {
     resize: function(size) {
         return sketcher.weight = size;
     },
-    // This function will change teh brush color
+    // This function will change the brush color
     color: function(color) {
         return sketcher.color = color;
     },
     // This function will toggle from erase to draw
     mode: function(mode) {
         return sketcher.mode = mode;
-    }
+    },
+
+
+    
 }

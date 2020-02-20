@@ -14,7 +14,10 @@ const routes = require("./routes");
 const app = express();
 
 // Either a development port (like heroku) or a local port of 3000
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 4500;
+
+// Require Passport as a middleware for User Auth
+var passport = require("passport");
 
 // Middleware for formatting JSON like objects
 // Takes in plain text from the http request and parses into a json like object.
@@ -46,8 +49,9 @@ mongoose.connect(
 
 
 
-
 const User = require('./models/user');
+
+
 
 
 // const router = express.Router();

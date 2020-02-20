@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 // import Saved from "./pages/Saved";
 import Nav from "./components/Nav";
 import atramentTest from "./pages/testingAtrament";
+import testAuth from "./pages/Auth";
 // Create our app function that will return our html like JSK to 
 // Display our front end
 
@@ -20,6 +21,7 @@ function App() {
           {/* Set our routes for home, that will load the home component */}
           <Route exact path="/" component={Home} />
           <Route exact path="/atramentTest" component={atramentTest} />
+          <Route exact path="/testAuth" component={testAuth} />
         </Switch>
       </div>
     </Router>

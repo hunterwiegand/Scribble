@@ -5,10 +5,9 @@ const userController = require("../../controllers/userController");
 
 // Fire on the "/" route
 router.route("/")
-.get(userController.test);
+.get(userController.findAll);
 
-router.route("/test")
-    .get(userController.test);
+
 
 
 module.exports = router;
