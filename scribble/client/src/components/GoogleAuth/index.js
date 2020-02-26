@@ -30,13 +30,12 @@ class GoogleAuth extends Component {
         let tempUsers = [];
         API.getUsers().then(res => (
             res.data.dbUser.forEach((element) =>
-                tempUsers.push(element.username)),
+                tempUsers.push(element.userName)),
             this.setState({
                 users: tempUsers
             }))
         ).catch(err => console.log("err: ", err));
     };
-
 
     render() {
         return (
@@ -73,7 +72,7 @@ class GoogleAuth extends Component {
                     {this.state.users.length ? (
                         <List>
                             {this.state.users.map(users => (
-                                <h1 key={users}>{users}</h1>
+                                <li key={users}>{users}</li>
                             ))}
                         </List>
                     ) : (
