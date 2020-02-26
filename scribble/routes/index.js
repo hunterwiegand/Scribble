@@ -10,7 +10,7 @@ router.use("/auth", authRoutes);
 
 // Direct to the index.html page on load
 router.use((req, res) =>
-  res.sendFile(path.join(__dirname, '../../client/public', 'index.html'))
+  res.sendFile(path.join(__dirname, '../../scribble/client/public', 'index.html'))
 );
 
 module.exports = router;
