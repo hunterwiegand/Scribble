@@ -1,7 +1,7 @@
 // Dependancies 
 const express = require("express");
 
-require("dotenv").confiq();
+// require("dotenv").confiq();
 
 // Require mongoose to allow us to easily write
 // to our mongoDb database
