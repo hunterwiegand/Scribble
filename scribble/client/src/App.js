@@ -1,7 +1,7 @@
 // Import react to allow us to use react components
 import React from "react";
 // Router acts as a wrapper for our project
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, HashRouter } from "react-router-dom";
 
 // Import the components we made to design the page
 import Home from "./pages/Home";
@@ -14,17 +14,17 @@ import testAuth from "./pages/Auth";
 
 function App() {
   return (
-    <Router basename={"/temp"} >
+    <HashRouter basename={"/temp"} >
       <div>
         <Nav />
         <Switch>
           {/* Set our routes for home, that will load the home component */}
           <Route exact path={`${process.env.PUBLIC_URL}/`} component={Home} />
-          <Route exact path={`${process.env.PUBLIC_URL}/atramentTest`} component={atramentTest} />
-          <Route path={`${process.env.PUBLIC_URL}/testAuth`} component={testAuth} />
+          <Route exact path={`${process.env.PUBLIC_URL}/#/atramentTest`} component={atramentTest} />
+          <Route path={`${process.env.PUBLIC_URL}/#/testAuth`} component={testAuth} />
         </Switch>
       </div>
-    </Router>
+    </HashRouter>
   );
 }
 
