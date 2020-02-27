@@ -29,7 +29,7 @@ class GoogleAuth extends Component {
     showUsers = () => {
         let tempUsers = [];
         API.getUsers().then(res => (
-            console.log("res.data", res.data),
+            console.log("res.data.userName", res.data),
             res.data.dbUser.forEach((element) =>
                 tempUsers.push(element.userName)),
             this.setState({
