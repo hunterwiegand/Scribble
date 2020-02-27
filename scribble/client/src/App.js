@@ -14,7 +14,7 @@ import testAuth from "./pages/Auth";
 
 function App() {
   return (
-    <Router basename={"/temp"}>
+    <Router basename={"/temp"} >
       <div>
         <Nav />
         <Switch>
@@ -27,6 +27,5 @@ function App() {
     </Router>
   );
 }
-
 
 export default App;
