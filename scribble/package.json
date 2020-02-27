@@ -6,7 +6,7 @@
   "scripts": {
     "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build",
     "server": "node server.js",
-    "dev": "concurrently \"node server.js\" \"cd client && npm start\" "
+    "start": "concurrently \"node server.js\" \"cd client && npm start\" "
   },
   "keywords": [],
   "author": "",
