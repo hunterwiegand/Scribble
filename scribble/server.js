@@ -35,6 +35,9 @@ app.use(express.json());
 // Files found in client/build
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/public"));
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"))
+  })
 };
 
 //Use the routes we import from our routes folder to navigate our app
