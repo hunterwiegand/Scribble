@@ -33,16 +33,18 @@ app.use(express.json());
 
 // If in a profuction envioprment, use the static
 // Files found in client/build
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/public"));
-  app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "client", "build", "index.html"))
-  });
-} else {
-  app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "client", "public", "index.html"));
-  });
-};
+// if (process.env.NODE_ENV === "production") {
+//   app.use(express.static("client/public"));
+//   app.get("/", (req, res) => {
+//     res.sendFile(path.join(__dirname, "client", "build", "index.html"))
+//   });
+// } else {
+//   app.get("/", (req, res) => {
+//     res.sendFile(path.join(__dirname, "client", "public", "index.html"));
+//   });
+// };
+
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 //Use the routes we import from our routes folder to navigate our app
 app.use(routes);
