@@ -1,7 +1,7 @@
 // Dependancies 
 const express = require("express");
 
-// require("dotenv").confiq();
+
 
 // Require mongoose to allow us to easily write
 // to our mongoDb database
@@ -30,6 +30,7 @@ const path = require("path");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+
 // If in a profuction envioprment, use the static
 // Files found in client/build
 if (process.env.NODE_ENV === "production") {
@@ -53,6 +54,12 @@ mongoose.connect(
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client", "public", "index.html"));
+});
+
+app.get("/api/greeting", (req, res) => {
+  const name = req.query.name || 'World';
+  res.setHeader('Content-Type', 'application/json');
+  res.send(JSON.stringify({ greeting: `Hello ${name}!` }));
 });
 
 app.listen(PORT, () => console.log("LISTENING ON PORT", PORT));
