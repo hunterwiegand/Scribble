@@ -21,7 +21,7 @@ function App() {
           {/* Set our routes for home, that will load the home component */}
           <Route exact path={`${process.env.PUBLIC_URL}/`} component={Home} />
           <Route exact path={`${process.env.PUBLIC_URL}/atramentTest`} component={atramentTest} />
-          <Route exact path={`${process.env.PUBLIC_URL}/testAuth`} component={testAuth} />
+          <Route path={`${process.env.PUBLIC_URL}/testAuth`} component={testAuth} />
         </Switch>
       </div>
     </Router>
