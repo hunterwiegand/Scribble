@@ -35,8 +35,12 @@ app.use(express.json());
 // Files found in client/build
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/public"));
-  app.get("*", (req, res) => {
+  app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "client", "build", "index.html"))
+  });
+} else {
+  app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "public", "index.html"));
   });
 };
 
@@ -55,15 +59,6 @@ mongoose.connect(
   }
 );
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "client", "public", "index.html"));
-});
-
-app.get("/api/greeting", (req, res) => {
-  const name = req.query.name || 'World';
-  res.setHeader('Content-Type', 'application/json');
-  res.send(JSON.stringify({ greeting: `Hello ${name}!` }));
-});
 
 app.listen(PORT, () => console.log("LISTENING ON PORT", PORT));
 
