@@ -3,8 +3,6 @@ import React from "react";
 // Router acts as a wrapper for our project
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import Component from "react";
-
 // Import the components we made to design the page
 import Home from "./pages/Home";
 // import Saved from "./pages/Saved";
@@ -16,14 +14,14 @@ import testAuth from "./pages/Auth";
 
 function App() {
   return (
-    <Router>
+    <Router basename={"/temp"}>
       <div>
         <Nav />
         <Switch>
           {/* Set our routes for home, that will load the home component */}
-          <Route exact path="/" component={Home} />
-          <Route exact path="/atramentTest" component={atramentTest} />
-          <Route exact path="/testAuth" component={testAuth} />
+          <Route exact path={`${process.env.PUBLIC_URL}/`} component={Home} />
+          <Route exact path={`${process.env.PUBLIC_URL}/atramentTest`} component={atramentTest} />
+          <Route exact path={`${process.env.PUBLIC_URL}/testAuth`} component={testAuth} />
         </Switch>
       </div>
     </Router>
