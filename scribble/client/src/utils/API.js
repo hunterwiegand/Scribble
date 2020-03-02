@@ -26,6 +26,11 @@ export default {
     return axios.get("/api/users");
   },
 
+  // Function that returns an axios call used to add users into our database
+  addUsers: function () {
+    return axios.post("/api/api/api");
+  },
+
   googleAuth: function() {
     return axios.get("/auth/auth");
   }
